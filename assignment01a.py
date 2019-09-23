@@ -85,5 +85,23 @@ That killed the rat,
 That ate the malt 
 That lay in the house that Jack built.
 '''
+array = [['the house that Jack built', 'lay in the house that Jack built'],
+         ['the malt', 'ate the malt'],
+         ['the rat', 'kill\'d the rat'],
+         ['the cat', 'worried the cat'],
+         ['the dog', 'toss\'d the dog'],
+         ['the cow with the crumpled horn', 'milk\'d the cow with the crumpled horn'],
+         ['the maiden all forlorn', 'kissed the maiden all forlorn'],
+         ['the man all tatter\'d and torn','married the man all tatter\'d and torn'],
+         ['the priest all shaven and shorn','waked the priest all shaven and shorn'],
+         ['the cock that crow\'d in the morn','kept the cock that crow\'d in the morn'],
+         ['the farmer sowing his corn','']]
 
-print(poem)
+for i in range (len(array)):
+    for j in range(i+1):
+        if j == 0:
+            print('This is ' + array[i-j][0])
+        else:
+            print('That ' + array[i-j][1])
+    print()
+
