@@ -1,11 +1,12 @@
 
-def task1():
+def task1(start, end):
     """
     Write a program which will find all such numbers which are divisible by 7 but are not a multiple of 5,
     between 2000 and 3200 (both included). The numbers obtained should be printed in a comma-separated sequence
     on a single line.
     """
     # todo: write your code here
+    return ','.join(str(i) for i in range(start, end + 1) if i % 7 == 0 and i % 5 != 0)
 
 
 def task2(rows, cols):
@@ -21,6 +22,9 @@ def task2(rows, cols):
     [[0, 0, 0, 0, 0], [0, 1, 2, 3, 4], [0, 2, 4, 6, 8]]
     """
     # todo: write your code here
+    return [[i * j for i in range(cols)] for j in range(rows)]
+
+
 
 
 def task3(password):
@@ -52,16 +56,39 @@ def task3(password):
     False
     """
     # todo: write your code here
+    return (6 <= len(password) <= 12
+            and any('a' <= s <= 'z' for s in password)
+            and any('A' <= s <= 'Z' for s in password)
+            and any('0' <= s <= '9' for s in password)
+            and any(s in '#$@' for s in password))
 
 
 def task4():
     """
     Write password generator function that uses the same rules as in Task 3.
     The password generator function must be able to generate all possible correct passwords.
+    >>> task3(task4())
+    True
     """
     # todo: write your code here
+    import random
+    n = random.randint(6, 11)
+    ls = []
+    ls.append(chr(random.randint(97, 122)))
+    ls.append(chr(random.randint(65, 90)))
+    ls.append(chr(random.randint(48, 57)))
+    ls.append(chr(random.choice([35, 36, 64])))
+
+    i = 3
+    while(i < n):
+        ls.append(chr(random.randint(33, 126)))
+        i += 1
+
+    random.shuffle(ls)
+    return ''.join(ls)
 
 
 if __name__ == '__main__':
+
     import doctest
     doctest.testmod()
